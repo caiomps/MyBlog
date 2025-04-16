@@ -13,10 +13,11 @@ const sequelize = new Sequelize(
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
+    await sequelize.sync();
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Database connection error:", error);
   }
 };
 
-module.exports = connectDB;
+module.exports = { connectDB, sequelize };
